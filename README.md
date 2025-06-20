@@ -8,9 +8,7 @@ This project demonstrates a simple Flask web app deployed in a lightweight Kuber
 
 - Ubuntu EC2 instance (static IP / DNS)
 - Kubernetes via [k3s](https://k3s.io)
-- Flask app running in a pod
-- Secret injected via hostPath volume
-- Kubernetes Dashboard for UI access
+- Docker
 
 ---
 
@@ -32,7 +30,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ---
 
-### 2. Deploy Kubernetes Dashboard
+### 2. Deploy Kubernetes Dashboard (Optional)
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
@@ -69,7 +67,7 @@ kubectl apply -f dashboard-admin-user.yaml
 
 ---
 
-### 3. Create Static Admin Token
+### 3. Create Static Admin Token (Optional)
 
 **admin-user-token.yaml**:
 
@@ -255,21 +253,6 @@ Retrieved Secret
 CyberArkSecretDemoValue123!
 ```
 
----
-
-## ✅ Optional Enhancements
-
-- 📦 Reload secrets dynamically
-- 🔐 Ingress controller with TLS and authentication
-- 🧰 Replace hostPath with CSI + sidecar for live Conjur demo
-
----
-
-## 🛡️ Security Notes
-
-- Static tokens are fine for testing, not production.
-- Use Kubernetes Secrets or CSI drivers for real-world scenarios.
-- Never expose NodePorts publicly in production without access controls.
 
 ---
 
